@@ -22,33 +22,35 @@ class App extends Component {
       prevState.page !== this.state.page ||
       prevState.value !== this.state.value
     ) {
-      this.loadMorePhotos();
+      this.findImages();
     }
   }
+
+  addValue = ({ inputValue }) => {
+    if (inputValue !== this.state.value) {
+      this.setState({
+        value: inputValue,
+        images: [],
+        page: 1,
+      });
+    } else {
+      this.setState({
+        value: inputValue,
+      });
+    }
+  };
 
   loadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
-  loadMorePhotos = async () => {
-    try {
-      const loadMorePhoto = await fetchData(this.state.value, this.state.page);
-      this.setState(prevState => ({
-        images: [...prevState.images, ...loadMorePhoto.hits],
-      }));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  findImages = async ({ inputValue }) => {
+  findImages = async () => {
     try {
       this.setState({ isLoading: true });
-      const photos = await fetchData(inputValue, this.state.page);
-      this.setState({
-        value: inputValue,
-        images: [...this.state.images, ...photos.hits],
-      });
+      const photos = await fetchData(this.state.value, this.state.page);
+      this.setState(prevState => ({
+        images: [...prevState.images, ...photos.hits],
+      }));
     } catch (error) {
       console.log(error);
     } finally {
@@ -57,11 +59,10 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.page);
     return (
       <AppBox>
         <Global styles={GlobalStyles} />
-        <Searchbar onSubmit={this.findImages} />
+        <Searchbar onSubmit={this.addValue} />
         {this.state.isLoading ? (
           <Loader />
         ) : (
