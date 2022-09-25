@@ -1,6 +1,6 @@
 import { Container } from '../App/Container.styled';
 import { Formik, Form, Field } from 'formik';
-import { ReactComponent as Icon } from '/Users/Kate/Documents/GitHub/goit-react-hw-03-image-finder/src/icons/icon.svg';
+import { ReactComponent as Icon } from '../icons/icon.svg';
 import {
   SearchbarBox,
   FormStyles,
