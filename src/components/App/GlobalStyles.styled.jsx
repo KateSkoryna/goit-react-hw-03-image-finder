@@ -1,14 +1,26 @@
 import { css } from '@emotion/react';
 
 const GlobalStyles = css`
+  html {
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    color: #212121;
+    background-color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #28303f;
   }
 
   code {
@@ -48,6 +60,10 @@ const GlobalStyles = css`
 
   a {
     text-decoration: none;
+  }
+
+  input {
+    padding: 0;
   }
 `;
 
