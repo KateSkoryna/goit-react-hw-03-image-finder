@@ -63,7 +63,7 @@ class App extends Component {
       <AppBox>
         <Global styles={GlobalStyles} />
         <Searchbar onSubmit={this.addValue} />
-        {this.state.isLoading ? (
+        {this.state.isLoading && this.state.images.length === 0 ? (
           <Loader />
         ) : (
           <ImageGallery items={this.state.images} />
