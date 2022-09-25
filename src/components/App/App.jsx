@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchData from '../services';
 import { Global } from '@emotion/react';
 import { AppBox } from './App.styled';
@@ -48,9 +48,13 @@ class App extends Component {
     try {
       this.setState({ isLoading: true });
       const photos = await fetchData(this.state.value, this.state.page);
-      this.setState(prevState => ({
-        images: [...prevState.images, ...photos.hits],
-      }));
+      return photos.hits.length === 0
+        ? Notify.failure(
+            'Sorry! There is no photo with this name. Try something else!'
+          )
+        : this.setState(prevState => ({
+            images: [...prevState.images, ...photos.hits],
+          }));
     } catch (error) {
       console.log(error);
     } finally {
@@ -59,20 +63,17 @@ class App extends Component {
   };
 
   render() {
+    const { images, isLoading } = this.state;
     return (
       <AppBox>
         <Global styles={GlobalStyles} />
         <Searchbar onSubmit={this.addValue} />
-        {this.state.isLoading && this.state.images.length === 0 ? (
+        {isLoading && images.length === 0 ? (
           <Loader />
         ) : (
-          <ImageGallery items={this.state.images} />
+          <ImageGallery items={images} />
         )}
-        {this.state.images.length === 0 ? (
-          ''
-        ) : (
-          <Button onClick={this.loadMore} />
-        )}
+        {images.length === 0 ? '' : <Button onClick={this.loadMore} />}
       </AppBox>
     );
   }

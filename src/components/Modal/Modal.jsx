@@ -4,7 +4,6 @@ import { Overlay, ModalWondow, ModalImage } from './Modal.styled';
 
 class Modal extends Component {
   handleClickByEscape = e => {
-    console.log(e);
     if (e.code === 'Escape') {
       this.props.onClose();
     }
@@ -17,7 +16,6 @@ class Modal extends Component {
   };
 
   componentDidMount() {
-    console.log('уже');
     window.addEventListener('keydown', this.handleClickByEscape);
   }
 
