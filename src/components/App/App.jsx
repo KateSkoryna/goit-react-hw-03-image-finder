@@ -9,6 +9,15 @@ import { GlobalStyles } from './GlobalStyles.styled';
 import Searchbar from 'components/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 
+Notify.init({
+  width: '300px',
+  position: 'center-top',
+  distance: '100px',
+  clickToClose: true,
+  cssAnimationStyle: 'zoom',
+  cssAnimationDuration: 1000,
+});
+
 class App extends Component {
   state = {
     value: '',
