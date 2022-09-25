@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import fetchData from '/Users/Kate/Documents/GitHub/goit-react-hw-03-image-finder/src/services';
+import fetchData from '../services';
 import { Global } from '@emotion/react';
 import { AppBox } from './App.styled';
 import Loader from 'components/Loader';
