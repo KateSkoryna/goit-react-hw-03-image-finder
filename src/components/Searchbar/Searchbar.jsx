@@ -1,6 +1,7 @@
 import { Container } from '../App/Container.styled';
 import { Formik, Form, Field } from 'formik';
 import { ReactComponent as Icon } from '../icons/icon.svg';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   SearchbarBox,
   FormStyles,
@@ -11,8 +12,11 @@ import {
 
 const Searchbar = ({ onSubmit }) => {
   const hendleSubmit = (values, actions) => {
-    onSubmit(values);
-    actions.resetForm();
+    if (values.inputValue === '') {
+      Notify.failure('Please, enter something for me to find!');
+    } else {
+      onSubmit(values);
+    }
   };
   return (
     <SearchbarBox>

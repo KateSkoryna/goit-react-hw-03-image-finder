@@ -57,7 +57,7 @@ class App extends Component {
     try {
       this.setState({ isLoading: true });
       const photos = await fetchData(this.state.value, this.state.page);
-      return photos.hits.length === 0
+      photos.hits.length === 0
         ? Notify.failure(
             'Sorry! There is no photo with this name. Try something else!'
           )
@@ -82,7 +82,11 @@ class App extends Component {
         ) : (
           <ImageGallery items={images} />
         )}
-        {images.length === 0 ? '' : <Button onClick={this.loadMore} />}
+        {images.length % 2 === 0 && images.length !== 0 ? (
+          <Button onClick={this.loadMore} />
+        ) : (
+          ''
+        )}
       </AppBox>
     );
   }
