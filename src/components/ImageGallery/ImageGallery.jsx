@@ -1,5 +1,6 @@
 import { Container } from 'components/App/Container.styled';
 import ImageGalleryItem from 'components/ImageGalleryItem';
+import PropTypes from 'prop-types';
 
 import {
   GallerySection,
@@ -21,6 +22,15 @@ const ImageGallery = ({ items }) => {
       </Container>
     </GallerySection>
   );
+};
+
+ImageGallery.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      restProps: PropTypes.node,
+    })
+  ),
 };
 
 export default ImageGallery;

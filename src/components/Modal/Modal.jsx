@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-// import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import { Overlay, ModalWondow, ModalImage } from './Modal.styled';
 
 class Modal extends Component {
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+  };
+
   handleClickByEscape = e => {
     if (e.code === 'Escape') {
       this.props.onClose();

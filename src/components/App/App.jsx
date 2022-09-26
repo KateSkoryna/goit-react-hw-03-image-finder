@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import fetchData from '../services';
 import { Global } from '@emotion/react';
+import { GlobalStyles } from './GlobalStyles.styled';
 import { AppBox } from './App.styled';
+import fetchData from '../../services/api';
 import Loader from 'components/Loader';
 import Button from 'components/Button';
-import { GlobalStyles } from './GlobalStyles.styled';
 import Searchbar from 'components/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 

@@ -1,7 +1,9 @@
-import { Container } from '../App/Container.styled';
-import { Formik, Form, Field } from 'formik';
-import { ReactComponent as Icon } from '../icons/icon.svg';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Formik, Form, Field } from 'formik';
+import { ReactComponent as Icon } from '../../icons/icon.svg';
+import { Container } from '../App/Container.styled';
+import PropTypes from 'prop-types';
+
 import {
   SearchbarBox,
   FormStyles,
@@ -41,6 +43,10 @@ const Searchbar = ({ onSubmit }) => {
       </Container>
     </SearchbarBox>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;
