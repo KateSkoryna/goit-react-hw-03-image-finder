@@ -29,7 +29,6 @@ class ImageGalleryItem extends Component {
           alt={tags}
           onClick={this.togglenModal}
         />
-        ;
         {this.state.showModal && (
           <Modal
             image={largeImageURL}
