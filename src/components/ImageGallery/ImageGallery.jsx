@@ -28,7 +28,6 @@ ImageGallery.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      restProps: PropTypes.node,
     })
   ),
 };
